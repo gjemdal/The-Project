@@ -1,0 +1,66 @@
+name: chess-bot
+version: 1
+
+extra-source-files:
+- README.md
+
+description: Haskell Chess Bot
+
+dependencies:
+- base >= 4.7 && < 5
+- containers
+- mtl
+- text
+- attoparsec
+- random
+- gloss
+- gloss-juicy
+- JuicyPixels
+- filepath
+- directory
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wredundant-constraints
+
+default-extensions:
+- OverloadedStrings
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Chess.Board
+    - Chess.Pieces
+    - Chess.Move
+    - Chess.Game
+    - Chess.AI.Minimax
+    - Chess.Render.Gloss
+    - Chess.FEN
+
+executables:
+  chess-bot:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - chess-bot
+
+tests:
+  chess-bot-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - chess-bot
+    - hspec
+    - QuickCheck

@@ -1,0 +1,95 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           chess-bot
+version:        1
+description:    Haskell Chess Bot
+build-type:     Simple
+extra-source-files:
+    README.md
+
+library
+  exposed-modules:
+      Chess.Board
+      Chess.Pieces
+      Chess.Move
+      Chess.Game
+      Chess.AI.Minimax
+      Chess.Render.Gloss
+      Chess.FEN
+  other-modules:
+      Paths_chess_bot
+  hs-source-dirs:
+      src
+  default-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      JuicyPixels
+    , attoparsec
+    , base >=4.7 && <5
+    , containers
+    , directory
+    , filepath
+    , gloss
+    , gloss-juicy
+    , mtl
+    , random
+    , text
+  default-language: Haskell2010
+
+executable chess-bot
+  main-is: Main.hs
+  other-modules:
+      Paths_chess_bot
+  hs-source-dirs:
+      app
+  default-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      JuicyPixels
+    , attoparsec
+    , base >=4.7 && <5
+    , chess-bot
+    , containers
+    , directory
+    , filepath
+    , gloss
+    , gloss-juicy
+    , mtl
+    , random
+    , text
+  default-language: Haskell2010
+
+test-suite chess-bot-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Chess.BoardSpec
+      Chess.MoveSpec
+      Paths_chess_bot
+  hs-source-dirs:
+      test
+  default-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      JuicyPixels
+    , QuickCheck
+    , attoparsec
+    , base >=4.7 && <5
+    , chess-bot
+    , containers
+    , directory
+    , filepath
+    , gloss
+    , gloss-juicy
+    , hspec
+    , mtl
+    , random
+    , text
+  default-language: Haskell2010

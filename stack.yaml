@@ -1,0 +1,11 @@
+resolver: lts-18.28
+
+packages:
+- .
+
+extra-deps:
+- gloss-1.13.2.1
+- GLUT-2.7.0.16
+- OpenGL-3.0.3.0
+- gloss-juicy-0.2.3
+- JuicyPixels-3.3.5
